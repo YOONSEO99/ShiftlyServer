@@ -14,6 +14,9 @@ mongoose.connect('mongodb://127.0.0.1:27017/shiftly')
 const userRoute = require('./routes/userRoute');
 app.use('/api/user', userRoute);
 
+const shiftRoute = require('./routes/shiftRoute');
+app.use('/api/shifts', shiftRoute);
+
 app.get('/',(req,res)=>{
     res.send('Shiftly API Server is working well');
 });
