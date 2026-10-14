@@ -7,7 +7,7 @@ const shiftSchema = new mongoose.Schema({
     perHour: {type:Number, required:true},
     place:{type:String, required:true}
 }, {
-    timestamps: true
+    timestamps: {createdAt:'created', updatedAt:'updated'}
 });
 
 module.exports = mongoose.model('Shift', shiftSchema);
