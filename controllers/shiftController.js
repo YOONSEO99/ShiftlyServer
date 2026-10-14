@@ -65,9 +65,8 @@ exports.addShift = async (req, res) => {
 
         const existingShift = await Shift.findOne({
             userId: shiftData.userId,
-            date: shiftData.date,
-            startTime: shiftData.startTime,
-            endTime: shiftData.endTime
+            start: shiftData.start,
+            end: shiftData.end
         });
 
         if (existingShift) {

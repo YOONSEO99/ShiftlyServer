@@ -17,8 +17,11 @@ app.use('/api/user', userRoute);
 const shiftRoute = require('./routes/shiftRoute');
 app.use('/api/shifts', shiftRoute);
 
-const CommentRoute = require('./routes/commentRoute');
-app.use('/api/comment',CommentRoute);
+const commentRoute = require('./routes/commentRoute');
+app.use('/api/comment',commentRoute);
+
+const permissionRoute = require('./routes/permissionRoute');
+app.use('/api/permission',permissionRoute);
 
 app.get('/',(req,res)=>{
     res.send('Shiftly API Server is working well');
