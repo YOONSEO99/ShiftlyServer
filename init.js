@@ -1,10 +1,18 @@
+require('dotenv').config(); 
 const mongoose = require('mongoose');
 const Permission = require('./models/Permission');
 
-mongoose.connect('mongodb://127.0.0.1:27017/shiftly')
+mongoose.connect(process.env.MONGO_URI)
     .then(async () => {
-        await Permission.insertMany([{ name: "admin" }, { name: "regular_user" }]);
-        console.log("finished successfully!");
+        await Permission.collection.dropIndexes();
+        console.log("Old indexes dropped successfully!");
+
+        await Permission.deleteMany({});
+        console.log("Existing permission data deleted!");
+
+        await Permission.insertMany([{ description: "admin" }, { description: "regular_user" }]);
+        console.log("New permission data inserted successfully!");
+
         mongoose.connection.close(); 
     })
     .catch(err => console.error(err));
